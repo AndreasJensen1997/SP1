@@ -2,85 +2,56 @@
 void setup() {
   size(959, 410); // Sætter størrelsen
   background(32, 52, 76); // Sætter baggrundsfarven
-
+  Flags flags = new Flags();
+  Rectangles rectangles = new Rectangles(37, 470, 25, 40);
+ 
   // Kalder Funktion som loader alle flag billederne
-  loadImages();
+  flags.loadImages();
 
   //Divider
   stroke(255);
   strokeWeight(3);
   line(478, 0, 478, 415);
 
-// Printer alle lange rektangler
-  printRect(0, 28);  // GROUP A Banners
-  printRect(0, 240); // GROUP B Banners
-  printRect(487, 28);  // GROUP C Banners
-  printRect(487, 240);   // GROUP D Banners
+  // Printer alle lange rektangler
+  rectangles.printRect(0, 28);  // GROUP A Banners
+  rectangles.printRect(0, 240); // GROUP B Banners
+  rectangles.printRect(487, 28);  // GROUP C Banners
+  rectangles.printRect(487, 240);   // GROUP D Banners
 
   //Printer alle farvede små rektangler
   noStroke(); // fjern stroke
   fill(99, 215, 250); // sæt farve til blå
-  printColorRect (457, 27);  //GROUP A
-  printColorRect (944, 27);  //GROUP C
+  rectangles.printColorRect (447, 27);  //GROUP A
+  rectangles.printColorRect (934, 27);  //GROUP C
   fill(255, 255, 85);  // sæt farve til blå
-  printColorRect (457, 239); //GROUP B
-  printColorRect (944, 239); //GROUP D
+  rectangles.printColorRect (447, 239); //GROUP B
+  rectangles.printColorRect (934, 239); //GROUP D
 
-  //Text  - GROUP A
-  fill(99, 215, 250);
-  textSize(25);
-  text("GROUP A", width/5, 20);
+// Priner alle gruppe navne 
+  flags.writeHeadline("GROUP A", width/5, 20, "mørkeBlå");
+  flags.writeHeadline("GROUP B", width/5, 230, "yellow");
+  flags.writeHeadline("GROUP C", 672, 20, "Mørkeblå" );
+  flags.writeHeadline("GROUP D", 672, 230, "yellow");
+  
+// Arrays med lande navne
+  String[] countriesGroupA = {"RUSSIA", "EGYPT", "SAUDI ARABIA", "URUUAY"};
+  String[] countriesGroupB = {"PORTUGAL", "SPAIN", "MORROCO ", "IRAN"};
+  String[] countriesGroupC = {"FRANCE", "AUSTRALIA", "PERU ", "DENMARK"};
+  String[] countriesGroupD = {"ARGENTINA", "NORWAY", "CROATIA ", "NIGERIA"};
 
-  fill(32, 52, 76);
-  textSize(38);
-  text("RUSSIA", 100, 59);
-  text("EGYPT", 100, 105);
-  text("SAUDI ARABIA", 100, 145);
-  text("URUGAY", 100, 190);
-
-  //Text  - GROUP B
-  fill(255, 255, 85);
-  textSize(25);
-  text("GROUP B", width/5, 230);
-
-  fill(32, 52, 76);
-  textSize(38);
-  text("PORTUGAL", 100, 269);
-  text("SPAIN", 100, 315);
-  text("MORROCO", 100, 360);
-  text("IRAN", 100, 405);
-
-  //Text  - GROUP C
-  fill(99, 215, 250);
-  textSize(25);
-  text("GROUP C", 672, 20);
-
-  fill(32, 52, 76);
-  textSize(38);
-  text("FRANCE", 580, 59);
-  text("AUSTRALIA", 580, 105);
-  text("PERU", 580, 145);
-  text("DENMARK", 580, 190);
-
-  //Text  - GROUP D
-  fill(255, 255, 85);
-  textSize(25);
-  text("GROUP D", 672, 230);
-
-  fill(32, 52, 76);
-  textSize(38);
-  text("ARGENTINA", 580, 269);
-  text("NORWAY", 580, 315);
-  text("CROATIA", 580, 360);
-  text("NIGERIA", 580, 405);
-
+// Printer alle landenavne
+  flags.writeNameOfFlag(countriesGroupA, 100, 59);
+  flags.writeNameOfFlag(countriesGroupB, 100, 269);
+  flags.writeNameOfFlag(countriesGroupC, 580, 59);
+  flags.writeNameOfFlag(countriesGroupD, 580, 269);
 
   // Group A (flag 1-4)
-  Display(0, 4, 0, 27);
+  flags.Display(0, 4, 0, 27);
   // Group B (flag 5-8)
-  Display(4, 8, 0, 239);
+  flags.Display(4, 8, 0, 239);
   // Group C (flag 9-12)
-  Display(8, 12, 485, 27);
+  flags.Display(8, 12, 485, 27);
   // Group D (flag 13-16)
-  Display(12, 16, 485, 239);
+  flags.Display(12, 16, 485, 239);
 }
